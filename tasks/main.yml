@@ -26,8 +26,9 @@
     accept_hostkey: "no"
     version: "master"
 
-#- name: Install Vim plugins
-#  become: "{{ vundle_user }}"
-#  command: vim -u "$HOME/.vundle.vimrc" +PluginInstall +qall
-#  tags:
-#    - skip_ansible_lint
+- name: Install Vim plugins
+  become: "{{ vundle_user }}"
+  shell: vim -u "$HOME/.vundle.vimrc" +PluginInstall +qall
+  tags:
+    - skip_ansible_lint
+  async: 200
